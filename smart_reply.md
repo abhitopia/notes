@@ -26,6 +26,7 @@ Data collected is message and reponse pairs. ( For triggering model, also messag
    - Feedforward MLP
      - embedding layer.
        - vocabulary approx. 1 million words.
+       - **feature hashing** to bucket rare words not in vocabulary.
        - embedding separate for each sparse feature type( eg. unigram vs bigram)
        - aggregate features within one feature type and then concatenated to get dense input vector
      - 3 full connected hidden layers.
