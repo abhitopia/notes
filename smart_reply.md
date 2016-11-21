@@ -8,6 +8,12 @@
 
 
 ## Algorithm
+- **Preprocessing**
+ - Language Detection
+ - Tokenization 
+ - Normalization (infrequent words removed. entities like names, URLs, addresses, replaces with special tokens)
+ - Quaitation Removal
+ - Salutation/close removal
 - **Response selection**
  - 
 - 
