@@ -11,7 +11,7 @@
   - diversity
     - ensure suggestions do not belong to same cluster.
 
-## Algorithm
+## Architecture
 - **Preprocessing**
 
  Data collected is message and reponse pairs. ( For triggering model, also messages with no response collected)
@@ -120,9 +120,7 @@
          - Organize responses in a _trie_ structure
          - do beam search with beamsize _b_ but retain only top b hypotheses prefixes in trie
          - complexiy now O(bl)
-
-## Implementation
-
+ 
 ## My thoughts
  - Confidence Model
 
