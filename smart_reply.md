@@ -39,14 +39,33 @@
      - Logistic loss cost function
        - Adagrad optimizer
    
-- **Response Clustering**
-  - Canonicalize preprocessed responses
+- **Response semantic intent clustering**
+
+ Only frequent responses are taken for clustering purposes. Low quality responses such as those containing spelling errors, or  profanity, informal language, etc. are removed.
+ - Canonicalize preprocessed responses
     - parse using **dependency parser**
     - use syntactic structure obtained to generate canonicalized representation
     - ignore
       - words (or phrases) that are modifiers
       - unattached to head words
-
+ - Extract lexical features
+    - ngrams of n upto 3
+    - skipgrams of n upto 3
+ - Graph construction
+   - Response Nodes (V_r)
+     - Labelled
+       - thankyou_label, sorry_label, etc.
+       - manually on top frequent responses
+     - Unlabelled
+   - Feature Nodes (V_f)
+     - nodes containing lexical features extracted above.
+   - create edges
+     - (u,v) where u belongs to V_r, v belongs to V_f such that v belongs to feature for response u
+ - Semi supervised learning
+   - distributed [EXPANDER](https://arxiv.org/abs/1512.01752) framework for optimization
+   - For equations, refer to original paper.
+   
+     
 - **Response selection**
  - 
 - 
