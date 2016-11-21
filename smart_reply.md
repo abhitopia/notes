@@ -23,9 +23,9 @@
  
 - **Trigerring Model**
  - Features
-  - after preprocessing extract content features
-    - unigrams, bigrams, etc.
-    - special signal like recipient in contact list, etc.
+   - after preprocessing extract content features
+     - unigrams, bigrams, etc.
+     - special signal like recipient in contact list, etc.
  - Architecture
    - Feedforward MLP
      - embedding layer.
