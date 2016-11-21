@@ -105,13 +105,21 @@
          - __Greedy Approach__
            - take most likely response at each time step, and feed back as input in next time step
          - __Beam Search__ (Less greedy approach)
-           - take top _b_ tokens at every time step and feed them as input in next time step
+           - take top _b_ tokens at first time step and feed them as input in next time step
            - then retain top _b_ best response prefixes and repeat
-      3. Score existing candidate response (Used by Smart Reply)
+      3. Score existing candidate response
          - feed in each token of the candidate response
          - use the softmax output to get the log likelihood of the next candidate token
          - sum loglikelihood of all the token in candidate response
-    - Smart reply uses third approach  
+    - Smart reply uses a hybrid approach
+       - If we use approach vanilla 3) to score all candidate responses |R|
+          - complexity O(|R|l) LSTM steps where l is the length of longest response.
+          - computationally infeasible due to large |R|
+          - increases over time as |R| increases
+       - Hybrid approach
+         - Organize responses in a _trie_ structure
+         - do beam search with beamsize _b_ but retain only top b hypotheses prefixes in trie
+         - complexiy now O(bl)
 
 ## Implementation
 
