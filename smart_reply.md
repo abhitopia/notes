@@ -86,8 +86,32 @@
    
      
 - **Response selection**
- - 
-- 
+  - Sequence to sequence LSTM is used.
+  - Training
+    - input and output vocabulary consists of most frequent words
+    - recurrent projection layer
+      - substantially improved quality of converged model
+      - substantially improved convergence time
+    - gradient clipping
+      - clipped at value 1
+      - essential for stable training
+    - SGD with Adagrad
+  - Inference
+    - Three ways to do inference
+      1. Sample Response
+         - sample output word at every time step and feed back as input in next time step.
+         - repeat until <EOS> is output.
+      2. Approximate most likely response
+         - __Greedy Approach__
+           - take most likely response at each time step, and feed back as input in next time step
+         - __Beam Search__ (Less greedy approach)
+           - take top _b_ tokens at every time step and feed them as input in next time step
+           - then retain top _b_ best response prefixes and repeat
+      3. Score existing candidate response (Used by Smart Reply)
+         - feed in each token of the candidate response
+         - use the softmax output to get the log likelihood of the next candidate token
+         - sum loglikelihood of all the token in candidate response
+    - Smart reply uses third approach  
 
 ## Implementation
 
