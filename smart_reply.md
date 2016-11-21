@@ -62,8 +62,27 @@
    - create edges
      - (u,v) where u belongs to V_r, v belongs to V_f such that v belongs to feature for response u
  - Semi supervised learning
-   - distributed [EXPANDER](https://arxiv.org/abs/1512.01752) framework for optimization
-   - For equations, refer to original paper.
+    - distributed [EXPANDER](https://arxiv.org/abs/1512.01752) framework for optimization
+    - For equations, refer to original paper.
+    - output is learned distribution of semantic intent label for every node.
+    - Assign top scoring label as the semantic intent (filter out low scoring labels)
+ - Discover new clusters
+    - there may be clusters not labelled initially
+    - Iterative propagation
+      - first phase
+        - labelled examples, 5 iterations.
+      - second phase
+        - fix cluster assignment after first phase
+        - sample 100 nodes from yet unlabelled nodes
+        - label new node as potential clusters
+        - run again
+      - subsequent phase
+        - repeat second phase until convergence
+        - convergence imply no new clusters are discovered, and members of the cluster don't change
+  - Cluster Validation
+     - extract top k members for each semantic cluster
+     - provide (response, cluster label) and few example responses from same cluster
+     - human raters to judge if response conveys same intent as cluster label and example responses
    
      
 - **Response selection**
