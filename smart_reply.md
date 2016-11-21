@@ -5,12 +5,16 @@
 
 ## Computation
 
-
+- **Response Clustering**
+  - cluser responses with same intent. 
+    - Eg., _"Yes, I'll be there"_ has same intent as _"I will be there"_
+  - diversity
+    - ensure suggestions do not belong to same cluster.
 
 ## Algorithm
 - **Preprocessing**
 
-Data collected is message and reponse pairs. ( For triggering model, also messages with no response collected)
+ Data collected is message and reponse pairs. ( For triggering model, also messages with no response collected)
  - Language Detection
  - Tokenization 
  - Normalization (infrequent words removed. entities like names, URLs, addresses, replaces with special tokens)
@@ -32,21 +36,24 @@ Data collected is message and reponse pairs. ( For triggering model, also messag
      - 3 full connected hidden layers.
        - Relu
        - drop after each hidden layer
- - Optimization
-   - Logistic loss cost function
-   - Adagrad optimizer
+     - Logistic loss cost function
+       - Adagrad optimizer
    
+- **Response Clustering**
+  - Canonicalize preprocessed responses
+    - parse using **dependency parser**
+    - use syntactic structure obtained to generate canonicalized representation
+    - ignore
+      - words (or phrases) that are modifiers
+      - unattached to head words
+
 - **Response selection**
  - 
 - 
 
 ## Implementation
 
-
-## Application
-
-## Code
-
-
+## My thoughts
+ - Confidence Model
 
 
