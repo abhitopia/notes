@@ -3,14 +3,6 @@
 * system is currently used in Inbox by Gmail
 * responsible for assisting with 10% of all mobile responses.
 
-## Computation
-
-- **Response Clustering**
-  - cluser responses with same intent. 
-    - Eg., _"Yes, I'll be there"_ has same intent as _"I will be there"_
-  - diversity
-    - ensure suggestions do not belong to same cluster.
-
 ## Architecture
 - **Preprocessing**
 
@@ -120,8 +112,10 @@
          - Organize responses in a _trie_ structure
          - do beam search with beamsize _b_ but retain only top b hypotheses prefixes in trie
          - complexiy now O(bl)
- 
-## My thoughts
- - Confidence Model
+  - Diversity
+    - Eg., _"Yes, I'll be there"_ has same intent as _"I will be there"_
+    - ensure suggestions do not belong to same cluster.
+    - enforce negative intent if not already chosen in top 3
+
 
 
