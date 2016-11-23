@@ -10,7 +10,7 @@
  - Language Detection
  - Tokenization 
  - Normalization (infrequent words removed. entities like names, URLs, addresses, replaces with special tokens)
- - Quaitation Removal
+ - Quotation Removal
  - Salutation/close removal
  
 - **Trigerring Model**
